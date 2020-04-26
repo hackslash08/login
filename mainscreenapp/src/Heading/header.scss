@@ -1,0 +1,58 @@
+/* header */
+
+.header {
+    display: flex;
+    align-items: center;
+    // justify-content: flex-start;
+    height: 43px;
+    width: 100%;
+    background-color: #aa2417;
+  }
+  .Navbar a {
+    color: #fff !important;
+  }
+  
+  .header p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .padding a{
+    margin-right: 20px !important;
+  }
+  
+  //material rewrite
+  
+  .navbar {
+    width: 100%;
+  }
+  
+  .navbar-brand {
+    color: #fff !important ;
+    font-size: 30px;
+    // font-family: sans-serif;
+    font-weight: bold;
+  }
+  
+  .navbar-light .navbar-text {
+    font-size: 20px;
+    // font-family: sans-serif;
+    font-weight: bold;
+  }
+  .headerlogo{
+   max-width: 70px;
+  }
+  
+  .Navbar p{
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: 20px;
+  }
+  
+  
+  .logoutlogo img{
+    max-height: 35px;
+    cursor: pointer !important;
+  }

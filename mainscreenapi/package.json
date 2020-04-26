@@ -1,0 +1,31 @@
+{
+  "name": "Mainscreen_API",
+  "version": "1.0.14",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha lib/**/**.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.9.9",
+    "path": "^0.12.7"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "email-verification": "^0.4.6",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.4",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.3",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "validate.js": "^0.12.0"
+  }
+}
