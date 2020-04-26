@@ -1,130 +1,146 @@
+import React, { Component } from "react";
+import Table from "react-bootstrap/Table";
+import ReactDOM from "react-dom";
+import "./Land.scss";
+import Del from "../Images/61848.png";
+import { Button, ButtonToolbar } from "react-bootstrap";
+import { Popup } from "../popup/Popup";
+import HeaderLand from "../Heading/HeaderLand";
+import axios from "axios";
+import { API_ENDPOINT } from "../config/config";
 
-import React from 'react';
-import logo from '../logo.svg';
+//import axios from "axios";
 
-import server from "../Images/server.png";
-import cp from "../Images/cp.png";
-import cma from "../Images/cma.png";
-import inv from "../Images/inv.png";
-import dev from "../Images/dev.png";
-import its from "../Images/its.png";
-import kub from "../Images/kub.png";
-import ira from "../Images/ira.png";
-import cont from "../Images/cont.png";
-import ref from "../Images/ref.png";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem,Form, FormControl } from 'react-bootstrap';
-import Card from "react-bootstrap/Card";  
-import Header from "../Heading/header";
-function Landing() {
+// import Popup from "../popup/popup";
 
-  const mystyle = {
-    border: "1px solid #eee",
-    boxShadow: "0 2px 2px #ccc",
-    width: "200px",
-    height: "220px",
-    padding: "20px",
-    marginTop: "40px",
-    marginLeft:"20px",
-    float: "left"
+// import closeIcon from "../../assets/error.png"
+// import viewicon from "../../assets/view.png";
+
+//import OutsideClickHandler from 'react-outside-click-handler';
+//import { API_ENDPOINT } from "../config/config";
+
+class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { popupShow: false };
+  }
+
+  state = {
+    data: [],
+    user: "",
+    m: "",
   };
+  componentDidMount() {
+    this.state.m = localStorage.getItem("firstname");
+    // this.setState({
+    //   user: this.state.m,
+    // });
+    this.getData();
+  }
+  // componentDidUpdate(){
+  //   this.getData();
+  // }
   
 
-  const mystyle1 = {
-    width: 100,
-    height: 100,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: "50%",
+  getData() {
+    axios
+      .get(`${API_ENDPOINT}api/get/projects?user=${this.state.m}`, {})
+      .then((res) => {
+        console.log(res.data.data, this.state.m);
+        this.setState({
+          data: res.data.data,
+        });
+        console.log(this.state.data);
+      });
+  }
+
+  handleDeleteProject = (id) => {
+    axios.delete(`${API_ENDPOINT}api/delete/projects?id=${id}`).then((res) => {
+      console.log(res.data);
+      this.getData();
+      console.log(this.state.data);
+    });
   };
 
-  const buttonstyle = {
-    marginTop: "20px"
-   
-  };
-  // const row1 = {
-  //   marginLeft: "45px",
-  // };
-  // const row2 = {
-  //   marginLeft: "170px",
-  // };
-  return (
-    <div className="App">
-        <Header></Header>
-      
-    
-        <div>
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={cp} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Cloud Profiler</Button>
-        
-        </Card>
+  render() {
+    let popupClose = () => {this.getData(); this.setState({ popupShow: false });}
+    return (
+      <React.Fragment>
+        <HeaderLand />
+        <ButtonToolbar>
+          <Button
+            variant="danger"
+            onClick={() => this.setState({ popupShow: true })}
+            style={{
+              marginTop: "2%",
+              marginLeft: "5%",
+              backgroundColor: "#aa2417",
+            }}
+          >
+            Add Project
+          </Button>
 
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={ira} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>iRAF</Button>
-        
-        </Card>
+          <Popup show={this.state.popupShow} onHide={popupClose} />
+        </ButtonToolbar>
+        <div className="table-responsive">
+          <div className="table-wrap ">
+            <Table striped bordered hover className="table ">
+              <thead className="tThead">
+                <tr>
+                  <th>Project</th>
+                  <th>Risk</th>
+                  <th>Technology</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+               <tbody className="tablebody">
+                 {this.state.data==undefined && 
+                 this.props.location.state.detail.map((projects) => (
+                  <tr key={projects._id}>
+                    <th>{projects.projectName}</th>
+                    <th>
+                      <a href="#">View</a>
+                    </th>
+                    <th>
+                      <a href="#">View</a>
+                    </th>
+                    <th>
+                      <a href="#">
+                        <img src={Del} style={{ height: "5%" }} />
+                        onClick=
+                        {this.handleDeleteProject.bind(this, projects._id)}
+                      </a>
+                    </th>
+                  </tr>
+                ))} 
+                {this.state.data!=undefined && 
+                 this.state.data.map((projects) => (
+                  <tr key={projects._id}>
+                    <th>{projects.projectName}</th>
+                    <th>
+                      <a href="#">View</a>
+                    </th>
+                    <th>
+                      <a href="#">View</a>
+                    </th>
+                    <th>
+                      <a href="#">
+                        <img src={Del} style={{ height: "5%" }} />
+                        onClick=
+                        {this.handleDeleteProject.bind(this, projects._id)}
+                      </a>
+                    </th>
+                  </tr>
+                ))} 
 
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={cma} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Cloud Maturity Assessment</Button>
-        
-        </Card>
-
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={dev} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Dev Ops Tools</Button>
-        
-        </Card>
-
-  
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={inv} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Inventory Tool</Button>
-        
-        </Card>
+                {/* <tr>{this.props.location.state.detail}</tr> */}
+              </tbody> 
+            </Table>
+          </div>
         </div>
-        <div>
-
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={its} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>IT Service Management</Button>
-        
-        </Card>
-
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={ref} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Cloud Ref. Architecture</Button>
-        
-        </Card>
-
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={kub} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Kubernetes Tools</Button>
-        
-        </Card>
-        <Card style={mystyle}>
-        <Card.Img variant="top" src={cont} style={mystyle1} />
-        
-            <Button variant="danger" block style = {buttonstyle}>Contractor Timesheet</Button>
-        
-        </Card>
-        </div>
-
-
-
-    </div>
-  );
+      </React.Fragment>
+    );
+  }
 }
 
 export default Landing;

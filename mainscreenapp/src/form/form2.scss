@@ -1,0 +1,195 @@
+.table-wrap {
+    // height: calc(100vh - 60px) !important;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 40px;
+    position: relative;
+  }
+  
+  .table th {
+    padding: 10px !important;
+    text-align: center;
+  }
+  
+  .table td {
+    text-align: center;
+  }
+  
+  .table tbody tr:hover {
+    text-align: center;
+  }
+  .approvBtn button {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px;
+    border: none;
+    background: none;
+  }
+  .approvBtn button:hover {
+    color: blue;
+    border: none;
+    background: none;
+  }
+  .table td {
+    vertical-align: middle !important;
+  }
+  //popup
+  
+  .popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: solid 1px black;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .popup_inner {
+    position: absolute;
+    height: 96vh;
+    width: 75%;
+    overflow-y: auto;
+    // margin-top: 200px;
+    margin: auto;
+    background: white;
+    text-align: right;
+    left: 186px;
+    top: 18px;
+  }
+  
+  .popup_inner .tablepopup {
+    margin: 20px;
+    border: solid 1px black;
+  }
+  
+  .viewClick {
+    cursor: pointer;
+    max-width: 30px;
+  }
+  .tablebody {
+    overflow-y: auto;
+  }
+  .tablebody td {
+    text-transform: capitalize;
+  }
+  .tablebody .td select {
+    text-transform: capitalize;
+  }
+  
+  .popup_inner img.closeicon {
+    margin: 20px;
+    max-width: 25px;
+  
+    cursor: pointer;
+  }
+  .table .tThead {
+    background-color: #aa2417 !important;
+    color: white;
+    margin-top: 20%;
+    //margin: 200px;
+  }
+  
+  //reject
+  .regButton {
+      display: flex; 
+      justify-content: baseline;
+      min-width: 100%;
+      margin-right: 0.25em;
+      border: none;
+      outline: none;
+      position: relative;
+      left: 200px;
+  }
+  .regButton button {
+    width: 100px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    background-color: #aa2417 !important;
+    border-radius: 4px;
+  }
+  .Rejectpopup {
+    flex-direction: column;
+    position: fixed;
+    height: 34vh;
+    width: 25%;
+    top: 0;
+    left: 0;
+    border: solid 1px black;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .Rejectpopup_inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 36vh;
+    width: 100%;
+    margin: auto;
+  }
+  .rejectcloseicon img {
+    float: right;
+    max-width: 25px;
+    margin-right: -170px;
+      margin-top: -35px;
+  }
+  .table-responsive {
+    width: 100% !important;
+    height: 633px;
+    margin-top: -70px;
+  }
+  
+  @media (min-width: 1920px) and (max-width: 2560px) {
+    .table-responsive {
+      width: 98% !important;
+      height: 1500px !important;
+      overflow: hidden;
+    }
+    .popup_inner {
+      height: 56vh;
+    }
+  }
+  .Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px 20px 0px;
+    min-width: 100%;
+    margin-right: 0.25em;
+    margin-top: 0.5em;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+  }
+  .Buttons button {
+    width: 150px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    color: white;
+    font-size:16px;
+    background-color: #aa2417 !important;
+  }
+  

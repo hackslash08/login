@@ -4,6 +4,6 @@
 // }
 
 module.exports = {
-    db: 'mongodb://localhost:27017/mainlogin',
-    port: 3030
-}
+  db: "mongodb://localhost:27017/cloudProfiler",
+  port: 3030,
+};
