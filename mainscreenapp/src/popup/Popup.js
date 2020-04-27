@@ -9,6 +9,7 @@ export class Popup extends Component {
     m: "",
     user: "",
     data: [],
+    projectName: "",
   };
 
   componentDidMount() {
@@ -22,11 +23,11 @@ export class Popup extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target.projectName.value);
-    const { data, user } = this.state;
+    const { data, user, projectName } = this.state;
     const postData = {
       data: data,
       user: user,
-      projectName: event.target.projectName.value,
+      projectName: projectName,
     };
     console.log(postData);
     axios
@@ -41,6 +42,11 @@ export class Popup extends Component {
       projectName: "",
     });
     toast.success("Successfully submitted", { containerId: "SuCCESS" });
+  };
+
+  handleNameChange = (evt) => {
+    console.log(evt.target.value);
+    this.setState({ [evt.target.name]: evt.target.value });
   };
 
   render() {
@@ -68,6 +74,7 @@ export class Popup extends Component {
                       name="projectName"
                       required
                       placeholder="projectName"
+                      onChange={this.handleNameChange}
                     />
                   </Form.Group>
                   <Form.Group>

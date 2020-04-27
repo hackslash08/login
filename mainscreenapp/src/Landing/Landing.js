@@ -40,7 +40,6 @@ class Landing extends Component {
   // componentDidUpdate(){
   //   this.getData();
   // }
-  
 
   getData() {
     axios
@@ -62,8 +61,16 @@ class Landing extends Component {
     });
   };
 
+  handleEdit = (id) => {
+    localStorage.setItem("projId", id);
+    console.log({ id });
+  };
+
   render() {
-    let popupClose = () => {this.getData(); this.setState({ popupShow: false });}
+    let popupClose = () => {
+      this.getData();
+      this.setState({ popupShow: false });
+    };
     return (
       <React.Fragment>
         <HeaderLand />
@@ -93,48 +100,78 @@ class Landing extends Component {
                   <th>Delete</th>
                 </tr>
               </thead>
-               <tbody className="tablebody">
-                 {this.state.data==undefined && 
-                 this.props.location.state.detail.map((projects) => (
-                  <tr key={projects._id}>
-                    <th>{projects.projectName}</th>
-                    <th>
-                      <a href="#">View</a>
-                    </th>
-                    <th>
-                      <a href="#">View</a>
-                    </th>
-                    <th>
-                      <a href="#">
-                        <img src={Del} style={{ height: "5%" }} />
-                        onClick=
-                        {this.handleDeleteProject.bind(this, projects._id)}
-                      </a>
-                    </th>
-                  </tr>
-                ))} 
-                {this.state.data!=undefined && 
-                 this.state.data.map((projects) => (
-                  <tr key={projects._id}>
-                    <th>{projects.projectName}</th>
-                    <th>
-                      <a href="#">View</a>
-                    </th>
-                    <th>
-                      <a href="#">View</a>
-                    </th>
-                    <th>
-                      <a href="#">
-                        <img src={Del} style={{ height: "5%" }} />
-                        onClick=
-                        {this.handleDeleteProject.bind(this, projects._id)}
-                      </a>
-                    </th>
-                  </tr>
-                ))} 
+              <tbody className="tablebody">
+                {this.state.data == undefined &&
+                  this.props.location.state.detail.map((projects) => (
+                    <tr key={projects._id}>
+                      <th>{projects.projectName}</th>
+                      <th>
+                        <a
+                          href="form"
+                          onClick={this.handleEdit.bind(this, projects._id)}
+                        >
+                          View
+                        </a>
+                      </th>
+                      <th>
+                        <a
+                          href="form2"
+                          onClick={this.handleEdit.bind(this, projects._id)}
+                        >
+                          View
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#">
+                          <img
+                            src={Del}
+                            style={{ height: "5%" }}
+                            onClick={this.handleDeleteProject.bind(
+                              this,
+                              projects._id
+                            )}
+                          />
+                        </a>
+                      </th>
+                    </tr>
+                  ))}
+                {this.state.data != undefined &&
+                  this.state.data.map((projects) => (
+                    <tr key={projects._id}>
+                      <th>{projects.projectName}</th>
+                      <th>
+                        <a
+                          href="form"
+                          onClick={this.handleEdit.bind(this, projects._id)}
+                        >
+                          View
+                        </a>
+                      </th>
+                      <th>
+                        <a
+                          href="form2"
+                          onClick={this.handleEdit.bind(this, projects._id)}
+                        >
+                          View
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#">
+                          <img
+                            src={Del}
+                            style={{ height: "5%" }}
+                            onClick={this.handleDeleteProject.bind(
+                              this,
+                              projects._id
+                            )}
+                          />
+                        </a>
+                      </th>
+                    </tr>
+                  ))}
 
                 {/* <tr>{this.props.location.state.detail}</tr> */}
-              </tbody> 
+              </tbody>
             </Table>
           </div>
         </div>

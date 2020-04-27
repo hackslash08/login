@@ -4,38 +4,70 @@ function createNewProject(req, res) {
   var payload = new project({
     user: req.body.user,
     projectName: req.body.projectName,
-    Risk_Compliance: req.body.Risk_Compliance,
-    Risk_Standards1: req.body.Risk_Standards1,
-    Risk_Standards2: req.body.Risk_Standards2,
-    Risk_DataGov1: req.body.Risk_DataGov1,
-    Risk_DataGov2: req.body.Risk_DataGov2,
-    Risk_DataGov3: req.body.Risk_DataGov3,
-    Risk_DataGov4: req.body.Risk_DataGov4,
-    Risk_InfoSec1: req.body.Risk_InfoSec1,
-    Risk_InfoSec2: req.body.Risk_InfoSec2,
-    Risk_InfoSec3: req.body.Risk_InfoSec3,
-    Risk_BusCon1: req.body.Risk_BusCon1,
-    Risk_BusCon2: req.body.Risk_BusCon2,
-    Tech_Virtualization1: req.body.Tech_Virtualization1,
-    Tech_Virtualization2: req.body.Tech_Virtualization2,
-    Tech_Legacy1: req.body.Tech_Legacy1,
-    Tech_Legacy2: req.body.Tech_Legacy2,
-    Tech_AppDepend1: req.body.Tech_AppDepend1,
-    Tech_AppDepend2: req.body.Tech_AppDepend2,
-    Tech_users: req.body.Tech_users,
-    Tech_LifecycMan1: req.body.Tech_LifecycMan1,
-    Tech_LifecycMan2: req.body.Tech_LifecycMan2,
-    Tech_Licensing1: req.body.Tech_Licensing1,
-    Tech_Licensing2: req.body.Tech_Licensing2,
-    Tech_Network1: req.body.Tech_Network1,
-    Tech_Network2: req.body.Tech_Network2,
-    Tech_Network3: req.body.Tech_Network3,
-    Tech_Network4: req.body.Tech_Network4,
-    Tech_Workload1: req.body.Tech_Workload1,
-    Tech_Workload2: req.body.Tech_Workload2,
-    Tech_Architecture1: req.body.Tech_Architecture1,
-    Tech_Architecture2: req.body.Tech_Architecture2,
-    Tech_Architecture3: req.body.Tech_Architecture3,
+    Risk_Compliance_Score: req.body.Risk_Compliance_Score,
+    Risk_Compliance_Rating: req.body.Risk_Compliance_Rating,
+    Risk_Standards1_Score: req.body.Risk_Standards1_Score,
+    Risk_Standards1_Rating: req.body.Risk_Standards1_Rating,
+    Risk_Standards2_Score: req.body.Risk_Standards2_Score,
+    Risk_Standards2_Rating: req.body.Risk_Standards2_Rating,
+    Risk_DataGov1_Score: req.body.Risk_DataGov1_Score,
+    Risk_DataGov1_Rating: req.body.Risk_DataGov1_Rating,
+    Risk_DataGov2_Score: req.body.Risk_DataGov2_Score,
+    Risk_DataGov2_Rating: req.body.Risk_DataGov2_Rating,
+    Risk_DataGov3_Score: req.body.Risk_DataGov3_Score,
+    Risk_DataGov3_Rating: req.body.Risk_DataGov3_Rating,
+    Risk_DataGov4_Score: req.body.Risk_DataGov4_Score,
+    Risk_DataGov4_Rating: req.body.Risk_DataGov4_Rating,
+    Risk_InfoSec1_Score: req.body.Risk_InfoSec1_Score,
+    Risk_InfoSec1_Rating: req.body.Risk_InfoSec1_Rating,
+    Risk_InfoSec2_Score: req.body.Risk_InfoSec2_Score,
+    Risk_InfoSec2_Rating: req.body.Risk_InfoSec2_Rating,
+    Risk_InfoSec3_Score: req.body.Risk_InfoSec3_Score,
+    Risk_InfoSec3_Rating: req.body.Risk_InfoSec3_Rating,
+    Risk_BusCon1_Score: req.body.Risk_BusCon1_Score,
+    Risk_BusCon1_Rating: req.body.Risk_BusCon1_Rating,
+    Risk_BusCon2_Score: req.body.Risk_BusCon2_Score,
+    Risk_BusCon2_Rating: req.body.Risk_BusCon2_Rating,
+    Tech_Virtualization1_Score: req.body.Tech_Virtualization1_Score,
+    Tech_Virtualization1_Rating: req.body.Tech_Virtualization1_Rating,
+    Tech_Virtualization2_Score: req.body.Tech_Virtualization2_Score,
+    Tech_Virtualization2_Rating: req.body.Tech_Virtualization2_Rating,
+    Tech_Legacy1_Score: req.body.Tech_Legacy1_Score,
+    Tech_Legacy1_Rating: req.body.Tech_Legacy1_Rating,
+    Tech_Legacy2_Score: req.body.Tech_Legacy2_Score,
+    Tech_Legacy2_Rating: req.body.Tech_Legacy2_Rating,
+    Tech_AppDepend1_Score: req.body.Tech_AppDepend1_Score,
+    Tech_AppDepend1_Rating: req.body.Tech_AppDepend1_Rating,
+    Tech_AppDepend2_Score: req.body.Tech_AppDepend2_Score,
+    Tech_AppDepend2_Rating: req.body.Tech_AppDepend2_Rating,
+    Tech_users_Score: req.body.Tech_users_Score,
+    Tech_users_Rating: req.body.Tech_users_Rating,
+    Tech_LifecycMan1_Score: req.body.Tech_LifecycMan1_Score,
+    Tech_LifecycMan1_Rating: req.body.Tech_LifecycMan1_Rating,
+    Tech_LifecycMan2_Score: req.body.Tech_LifecycMan2_Score,
+    Tech_LifecycMan2_Rating: req.body.Tech_LifecycMan2_Rating,
+    Tech_Licensing1_Score: req.body.Tech_Licensing1_Score,
+    Tech_Licensing1_Rating: req.body.Tech_Licensing1_Rating,
+    Tech_Licensing2_Score: req.body.Tech_Licensing2_Score,
+    Tech_Licensing2_Rating: req.body.Tech_Licensing2_Rating,
+    Tech_Network1_Score: req.body.Tech_Network1_Score,
+    Tech_Network1_Rating: req.body.Tech_Network1_Rating,
+    Tech_Network2_Score: req.body.Tech_Network2_Score,
+    Tech_Network2_Rating: req.body.Tech_Network2_Rating,
+    Tech_Network3_Score: req.body.Tech_Network3_Score,
+    Tech_Network3_Rating: req.body.Tech_Network3_Rating,
+    Tech_Network4_Score: req.body.Tech_Network4_Score,
+    Tech_Network4_Rating: req.body.Tech_Network4_Rating,
+    Tech_Workload1_Score: req.body.Tech_Workload1_Score,
+    Tech_Workload1_Rating: req.body.Tech_Workload1_Rating,
+    Tech_Workload2_Score: req.body.Tech_Workload2_Score,
+    Tech_Workload2_Rating: req.body.Tech_Workload2_Rating,
+    Tech_Architecture1_Score: req.body.Tech_Architecture1_Score,
+    Tech_Architecture1_Rating: req.body.Tech_Architecture1_Rating,
+    Tech_Architecture2_Score: req.body.Tech_Architecture2_Score,
+    Tech_Architecture2_Rating: req.body.Tech_Architecture2_Rating,
+    Tech_Architecture3_Score: req.body.Tech_Architecture3_Score,
+    Tech_Architecture3_Rating: req.body.Tech_Architecture3_Rating,
   });
   payload //saving the payload into the DB, that means the fields in the form will be saved into the database as a new project.
     .save(payload)
@@ -47,17 +79,18 @@ function createNewProject(req, res) {
     });
 }
 
-//getting project list and details
-// function getProjectList(req, res) {
-//   project
-//     .find()
-//     .then((data) => {
-//       return res.status(200).send({ success: true, data: data });
-//     })
-//     .catch((err) => {
-//       return res.status(400).send({ success: false, data: err });
-//     });
-// }
+//getting project details
+function getProjectdata(req, res) {
+  project
+    .find({ _id: req.query.id })
+    .then((data) => {
+      return res.status(200).send({ success: true, data: data });
+    })
+    .catch((err) => {
+      return res.status(400).send({ success: false, data: err });
+    });
+}
+
 function getProjectList(req, res) {
   console.log(req.query.user);
   var man = { user: req.query.user };
@@ -102,4 +135,5 @@ module.exports = {
   getProjectList,
   editProject,
   deleteProject,
+  getProjectdata,
 };
